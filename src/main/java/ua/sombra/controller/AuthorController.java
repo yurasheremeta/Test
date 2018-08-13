@@ -63,12 +63,6 @@ public class AuthorController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-//	@GetMapping("/findOlder55/{author}")
-////	public ResponseEntity<List<AuthorDTO>> findAuthorsOlder55(@PathVariable("author")){
-////		List<AuthorDTO> dtos = authorService.findAuthorOlder55()
-////		return new ResponseEntity<>(dtos , HttpStatus.OK);
-////	}
-////
 	@GetMapping("/findOlder55")
 	public ResponseEntity<List<AuthorDTO>> findOlder55(){
 		List<AuthorDTO> authordto = authorService.findAuthorOlder55();
