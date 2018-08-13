@@ -1,0 +1,3 @@
+
+DROP DATABASE IF EXISTS test_sombra;
+CREATE DATABASE test_sombra CHAR SET UTF8;
