@@ -33,10 +33,10 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	@Override
-	public List<AuthorEntity> findAllAuthors() {
+	public List<AuthorDTO> findAllAuthors() {
 		List<AuthorEntity> authorEntities = authorRepository.findAll();
 		List<AuthorDTO> authorDtos = modelMapper.mapAll(authorEntities, AuthorDTO.class);
-		return authorEntities;
+		return authorDtos;
 	}
 
 	@Override

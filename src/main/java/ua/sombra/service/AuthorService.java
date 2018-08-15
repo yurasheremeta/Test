@@ -10,7 +10,7 @@ public interface AuthorService {
 	
 	void SaveAuthor(AuthorDTO dto);
 	
-	List<AuthorEntity> findAllAuthors();
+	List<AuthorDTO> findAllAuthors();
 	
 	AuthorDTO findAuthorById(Long id);
 	
