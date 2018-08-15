@@ -1,17 +1,16 @@
 package ua.sombra.service;
 
-import java.sql.Date;
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
 import ua.sombra.domain.AuthorDTO;
 import ua.sombra.entity.AuthorEntity;
+
 
 public interface AuthorService {
 	
 	void SaveAuthor(AuthorDTO dto);
 	
-	List<AuthorDTO> findAllAuthors();
+	List<AuthorEntity> findAllAuthors();
 	
 	AuthorDTO findAuthorById(Long id);
 	
@@ -19,5 +18,6 @@ public interface AuthorService {
 	
 	void deleteAuthor(Long id);
 	List<AuthorDTO> findAuthorOlder55();
+	List<AuthorDTO> findAuthorWithMostCountOfBooks();
 
 }

@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Bean;
 public class RestAppApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(RestAppApplication.class, args);
 	}
 	@Bean
-	public static ModelMapper modelMapper() {
+	public static ModelMapper modelMapper()
+	{
 		return new ModelMapper();
 	}
 }

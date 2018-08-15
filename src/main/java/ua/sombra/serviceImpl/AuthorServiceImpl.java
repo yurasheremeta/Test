@@ -1,17 +1,16 @@
 package ua.sombra.serviceImpl;
 
-import java.sql.Date;
 import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ua.sombra.domain.AuthorDTO;
 import ua.sombra.entity.AuthorEntity;
-import ua.sombra.repository.AuthorRepository;
 import ua.sombra.service.AuthorService;
 import ua.sombra.service.utils.ObjectMapperUtils;
+import ua.sombra.domain.AuthorDTO;
+import ua.sombra.repository.AuthorRepository;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -34,10 +33,10 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	@Override
-	public List<AuthorDTO> findAllAuthors() {
+	public List<AuthorEntity> findAllAuthors() {
 		List<AuthorEntity> authorEntities = authorRepository.findAll();
 		List<AuthorDTO> authorDtos = modelMapper.mapAll(authorEntities, AuthorDTO.class);
-		return authorDtos;
+		return authorEntities;
 	}
 
 	@Override
@@ -66,7 +65,14 @@ public class AuthorServiceImpl implements AuthorService {
 		return dtos;
 	}
 
-//	@Override
+	@Override
+	public List<AuthorDTO> findAuthorWithMostCountOfBooks() {
+			List<AuthorEntity> authorEntities = authorRepository.findAuthorWithMostCountOfBooks();
+			List<AuthorDTO> dto = modelMapper.mapAll(authorEntities , AuthorDTO.class);
+		return dto;
+	}
+
+	//	@Override
 //	public List<AuthorDTO> findAuthorOlder55(Date born) {
 //		List<AuthorEntity> authorEntities = authorRepository.findAuthorOlder55(born);
 //		List<AuthorDTO> dtos = modelMapper.mapAll(authorEntities, AuthorDTO.class);

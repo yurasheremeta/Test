@@ -2,7 +2,13 @@ package ua.sombra.domain;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import ua.sombra.entity.AuthorEntity;
+@Getter
+@Setter
+@NoArgsConstructor
 
 public class BookDTO {
 	
@@ -17,51 +23,5 @@ public class BookDTO {
 	private int rating;
 	
 	private List<AuthorEntity> authors;
-	
-	public BookDTO() {
-		
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPublished() {
-		return published;
-	}
-
-	public void setPublished(String published) {
-		this.published = published;
-	}
-
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-
 
 }

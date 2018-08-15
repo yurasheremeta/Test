@@ -6,10 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-//"name": "Dark",
-//"published": "21-09-23",
-//"genre": "fantastic",
-//"rating": 1
 import ua.sombra.domain.BookDTO;
 import ua.sombra.service.BookService;
 
@@ -31,7 +27,8 @@ public class BookController {
 	@GetMapping
 	public ResponseEntity<List<BookDTO>> findAllBooks(){
 		List<BookDTO> dtos = bookService.findAllBooks();
-		return new ResponseEntity<>(dtos , HttpStatus.OK);
+		return new ResponseEntity<>(dtos, HttpStatus.OK);
+
 	}
 	@GetMapping("/findById/{bookId}")
  	public ResponseEntity<BookDTO> findBookById(@PathVariable("bookId") Long id){
@@ -56,6 +53,16 @@ public class BookController {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	@GetMapping("/findGenre/{genre}")
+	public ResponseEntity<BookDTO> findCountByGenre(@PathVariable("genre") String genre){
+		BookDTO dto = bookService.findCountByGenre(genre);
+		return new ResponseEntity<>(dto,HttpStatus.OK);
+	}
+	@GetMapping("/findBook/Author")
+	public ResponseEntity<BookDTO> findBookWhichAuthorHasMoreThan1Book(){
+		BookDTO dto  = bookService.findBook();
+		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
 }

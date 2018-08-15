@@ -15,6 +15,7 @@ public interface BookService {
 	void updateBook(BookDTO dto);
 	
 	void deleteBook(Long id);
-	
+	BookDTO findCountByGenre(String genre);
+	BookDTO findBook();
 
 }

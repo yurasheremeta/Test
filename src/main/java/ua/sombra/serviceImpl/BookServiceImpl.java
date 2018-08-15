@@ -1,15 +1,15 @@
 package ua.sombra.serviceImpl;
 
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import ua.sombra.domain.BookDTO;
 import ua.sombra.entity.BookEntity;
-import ua.sombra.repository.BookRepository;
 import ua.sombra.service.BookService;
 import ua.sombra.service.utils.ObjectMapperUtils;
+import ua.sombra.domain.BookDTO;
+import ua.sombra.repository.BookRepository;
+
 @Service
 public class BookServiceImpl implements BookService {
 	
@@ -53,4 +53,17 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public BookDTO findCountByGenre(String genre) {
+		BookEntity bookEntitie = bookRepository.findCountByGenre(genre);
+		BookDTO dto = modelMapper.map(bookEntitie , BookDTO.class);
+		return dto;
+	}
+
+	@Override
+	public BookDTO findBook() {
+		BookEntity bookEntity = bookRepository.findBook();
+		BookDTO dto = modelMapper.map(bookEntity , BookDTO.class);
+		return dto;
+	}
 }

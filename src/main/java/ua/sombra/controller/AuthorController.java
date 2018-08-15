@@ -1,6 +1,5 @@
 package ua.sombra.controller;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +34,14 @@ public class AuthorController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	@GetMapping
-	public ResponseEntity<List<AuthorDTO>> findAllAuthor(){
-		List<AuthorDTO> dto = authorService.findAllAuthors();
-		return new ResponseEntity<>(dto , HttpStatus.OK);
+	public ResponseEntity<List<AuthorEntity>> findAllAuthor(){
+		List<AuthorEntity> entity = authorService.findAllAuthors();
+		return new ResponseEntity<>(entity , HttpStatus.OK);
 	}
+
+	//SELECT *  , count(ab.author_id) FROM author_book ab join author a on ab.book_id = a.id;
+
+
 	@GetMapping("/findById/{authorId}")
 	public ResponseEntity<AuthorDTO> findAuthorById(@PathVariable("authorId") Long id){
 		AuthorDTO dto = authorService.findAuthorById(id);
@@ -68,6 +71,11 @@ public class AuthorController {
 		List<AuthorDTO> authordto = authorService.findAuthorOlder55();
 		return new ResponseEntity<>(authordto, HttpStatus.OK);
 
+	}
+	@GetMapping("/findAuthor")
+	public ResponseEntity<List<AuthorDTO>> findAuthorWithMostBooks(){
+		List<AuthorDTO> dto = authorService.findAuthorWithMostCountOfBooks();
+		return new ResponseEntity<>(dto , HttpStatus.OK);
 	}
 
 }
